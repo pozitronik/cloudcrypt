@@ -1,6 +1,6 @@
 # CloudCrypt
 
-Standalone command-line utility for encrypting and decrypting files using the same cipher backends as the (https://github.com/pozitronik/CloudMailRu)[CloudMailRu Total Commander plugin]. Useful for backup verification, migration between storage providers, or working with encrypted files outside Total Commander.
+Standalone command-line utility for encrypting and decrypting files using the same cipher backends as the [https://github.com/pozitronik/CloudMailRu](CloudMailRu Total Commander plugin). Useful for backup verification, migration between storage providers, or working with encrypted files outside Total Commander.
 
 ## Building
 
@@ -93,7 +93,7 @@ All profiles use CFB-8 (Cipher Feedback with 8-bit shift register) mode. Key pro
 
 ### Compatibility
 
-Files encrypted by the (https://github.com/pozitronik/CloudMailRu)[CloudMailRu plugin] can be decrypted by CloudCrypt and vice versa, provided the same profile and password are used. The default profile matches the plugin's default encryption settings.
+Files encrypted by the [https://github.com/pozitronik/CloudMailRu](CloudMailRu plugin) can be decrypted by CloudCrypt and vice versa, provided the same profile and password are used. The default profile matches the plugin's default encryption settings.
 
 ### Directory Mode
 
