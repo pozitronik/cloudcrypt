@@ -1,0 +1,4 @@
+/tests/
+/Win64/
+/Win32/
+*.res
