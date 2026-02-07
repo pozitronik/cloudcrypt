@@ -100,7 +100,7 @@ end;
 function RunCryptCommand(const Args: TCommandLineArgs): Integer;
 var
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Password: string;
 	Validation: TValidationResult;
 	Processed, Failed: Integer;

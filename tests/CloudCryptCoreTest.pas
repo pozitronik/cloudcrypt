@@ -578,7 +578,7 @@ end;
 
 procedure TProcessFileTest.EncryptFile_IncrementsProcessed;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 begin
 	CreateTestFile('input.txt', 'Hello, World!');
@@ -600,7 +600,7 @@ end;
 
 procedure TProcessFileTest.DecryptFile_IncrementsProcessed;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 begin
 	CreateTestFile('input.txt', 'Hello, World!');
@@ -631,7 +631,7 @@ end;
 
 procedure TProcessFileTest.EncryptDecryptRoundtrip_PreservesContent;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Original, Decrypted: string;
 begin
@@ -662,7 +662,7 @@ end;
 
 procedure TProcessFileTest.EncryptedFile_DiffersFromOriginal;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	OriginalBytes, EncryptedBytes: TBytes;
 	I: Integer;
@@ -698,7 +698,7 @@ end;
 
 procedure TProcessFileTest.EncryptedFile_SameSizeAsOriginal;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	OriginalSize, EncryptedSize: Int64;
 begin
@@ -724,7 +724,7 @@ end;
 
 procedure TProcessFileTest.NonExistentSource_IncrementsFailed;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 begin
 	TCipherProfileRegistry.Initialize;
@@ -745,7 +745,7 @@ end;
 
 procedure TProcessFileTest.ProcessedAndFailed_AccumulateAcrossCalls;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 begin
 	CreateTestFile('file1.txt', 'content1');
@@ -803,7 +803,7 @@ end;
 
 procedure TProcessDirectoryTest.ProcessesAllFilesInDirectory;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	InDir, OutDir: string;
 begin
@@ -828,7 +828,7 @@ end;
 
 procedure TProcessDirectoryTest.CreatesOutputDirectoryStructure;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	InDir, OutDir: string;
 begin
@@ -852,7 +852,7 @@ end;
 
 procedure TProcessDirectoryTest.ProcessesNestedSubdirectories;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	InDir, OutDir: string;
 begin
@@ -879,7 +879,7 @@ end;
 
 procedure TProcessDirectoryTest.EmptyDirectory_ProcessesZeroFiles;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	InDir, OutDir: string;
 begin
@@ -903,7 +903,7 @@ end;
 
 procedure TProcessDirectoryTest.DirectoryRoundtrip_PreservesAllContent;
 var
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	InDir, EncDir, DecDir: string;
 	OrigContent1, OrigContent2, DecContent1, DecContent2: string;
@@ -998,7 +998,7 @@ procedure TProfileRoundtripTest.AllProfiles_CreateValidCiphers;
 var
 	Profiles: TArray<TCipherProfile>;
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 begin
 	Profiles := TCipherProfileRegistry.GetProfiles;
 	Assert.IsTrue(Length(Profiles) >= 3, 'At least 3 DCPCrypt profiles expected');
@@ -1012,7 +1012,7 @@ end;
 procedure TProfileRoundtripTest.DCPCryptAES_Roundtrip;
 var
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Original: string;
 begin
@@ -1040,7 +1040,7 @@ end;
 procedure TProfileRoundtripTest.DCPCryptAES256SHA256_Roundtrip;
 var
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Original: string;
 begin
@@ -1068,7 +1068,7 @@ end;
 procedure TProfileRoundtripTest.DCPCryptTwofish_Roundtrip;
 var
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Original: string;
 begin
@@ -1096,7 +1096,7 @@ end;
 procedure TProfileRoundtripTest.BCrypt_Roundtrip;
 var
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Original: string;
 begin
@@ -1128,7 +1128,7 @@ end;
 procedure TProfileRoundtripTest.WrongPassword_ProducesGarbage;
 var
 	Profile: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Original, Decrypted: string;
 begin
@@ -1158,7 +1158,7 @@ end;
 procedure TProfileRoundtripTest.DifferentProfiles_ProduceDifferentCiphertext;
 var
 	Profile1, Profile2: TCipherProfile;
-	FileCipher: ICipher;
+	FileCipher: IFileCipher;
 	Processed, Failed: Integer;
 	Enc1Bytes, Enc2Bytes: TBytes;
 	I: Integer;

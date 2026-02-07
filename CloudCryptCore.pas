@@ -42,11 +42,11 @@ function ValidateCryptArgs(const Args: TCommandLineArgs): TValidationResult;
 
 {Encrypts or decrypts a single file using the provided cipher.
 Increments Processed on success, Failed on error. Writes status to stdout/stderr.}
-procedure ProcessFile(const FileCipher: ICipher; const InFile, OutFile: string; Encrypt: Boolean;
+procedure ProcessFile(const FileCipher: IFileCipher; const InFile, OutFile: string; Encrypt: Boolean;
 	var Processed, Failed: Integer);
 
 {Recursively encrypts or decrypts all files in InDir, replicating structure under OutDir.}
-procedure ProcessDirectory(const FileCipher: ICipher; const InDir, OutDir: string; Encrypt: Boolean;
+procedure ProcessDirectory(const FileCipher: IFileCipher; const InDir, OutDir: string; Encrypt: Boolean;
 	var Processed, Failed: Integer);
 
 implementation
@@ -144,7 +144,7 @@ begin
 	end;
 end;
 
-procedure ProcessFile(const FileCipher: ICipher; const InFile, OutFile: string; Encrypt: Boolean;
+procedure ProcessFile(const FileCipher: IFileCipher; const InFile, OutFile: string; Encrypt: Boolean;
 	var Processed, Failed: Integer);
 var
 	CipherResult: Integer;
@@ -176,7 +176,7 @@ begin
 	end;
 end;
 
-procedure ProcessDirectory(const FileCipher: ICipher; const InDir, OutDir: string; Encrypt: Boolean;
+procedure ProcessDirectory(const FileCipher: IFileCipher; const InDir, OutDir: string; Encrypt: Boolean;
 	var Processed, Failed: Integer);
 var
 	Files: TArray<string>;
